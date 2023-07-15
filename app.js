@@ -2,6 +2,9 @@ const gameBoard = document. querySelector ("#gameboard")
 const playerDisplay = document.querySelector("#player")
 const infoDisplay = document.querySelector("#info-display")
 const width = 8
+let playerGo = 'black'
+playerDisplay.textContent = 'black'
+
 
 
 const startPieces = [
@@ -66,9 +69,22 @@ function dragOver(e) {
 
 function dragDrop(e) {
     e.stopPropagation()
+    console.log(e.target)
+    const taken = e.target.classList.contains('piece')
 
     //e.target.parentNode.append(draggedElement)
-    e.target.append(draggedElement)
+    //e.target.remove()
+    //e.target.append(draggedElement)
+    changePlayer()
 
 }
 
+function changePlayer() {
+    if (playerGo === "black") {
+        playerGo = "white"
+        playerDisplay.textContent = 'white'
+    } else {
+        playerGo = "black"
+        playerDisplay.textContent = 'black'
+    }
+}
