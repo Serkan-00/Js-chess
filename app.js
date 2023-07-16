@@ -69,7 +69,6 @@ function dragOver(e) {
 
 function dragDrop(e) {
     e.stopPropagation()
-    console.log('e.target', e.target)
     const correctGo = draggedElement.firstChild.classList.contains(playerGo)
     const taken = e.target.classList.contains('piece')
     const valid = checkIfValid(e.target)
@@ -98,9 +97,15 @@ function dragDrop(e) {
         }
     }
 }
+
 function checkIfValid(target) {
-    console.log(target)
+    const targetId = target.getAttribute('square-id') || target.parentNode.getAttribute('square-id')
+    console.log(targetId)
 }
+
+
+
+
 function changePlayer() {
     if (playerGo === "black") {
         reverseIds()
